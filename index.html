@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rede Neural</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+</head>
+<body>
+    <div style="width:80%; margin:50px 10%">
+        <canvas id="canvas" width="1005" height="502"
+                style="display: block; width: 1005px; height: 502px;">
+        </canvas>
+    </div>
+    <script>
+        var config = {
+            type: 'line',
+            data: {
+                labels: [
+                  "Janeiro", "Fevereiro", "Março", "Abril",
+                  "Maio", "Junho", "Julho", "Agosto"
+                ],
+                datasets: [{
+                    label: "Temperatura (°C) ",
+                    backgroundColor: 'rgba(255, 25, 117, 0.8)',
+                    borderColor: 'rgba(255, 25, 117, 0.8)',
+                    data: [10, 30, 0, 40, 10, -10, 20, 40],
+                    fill: false,
+                }, {
+                    label: "Umidade (%) ",
+                    fill: false,
+                    backgroundColor: 'rgba(0, 210, 255, 0.8)',
+                    borderColor: 'rgba(0, 210, 255, 0.8)',
+                    data: [50, 30, 20, 80, 30, 40, 10, 70],
+                }]
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true,
+                    text:'Histórico de Temperatura x Umidade'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                    }],
+                    yAxes: [{
+                        display: true,
+                    }]
+                }
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myLine = new Chart(ctx, config);
+        };
+
+    </script>
+</body>
+</html>
